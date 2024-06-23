@@ -10,8 +10,8 @@ define( "ENVIRONMENT", "PRD2" ); // DEV||PRD
 define( "MANDT", "600" );
 define( "DB_DSN_PDO", "oci:dbname=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = 10.1.0.18)(PORT = 1521))(CONNECT_DATA = (SID = MAKESS20)))" ); //Local
 define( "DB_DSN", "(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = 10.1.0.18)(PORT = 1521))(CONNECT_DATA = (SID = MAKESS20)))" ); //Local
-define( "DB_USERNAME", "hrpay" );
-define( "DB_PASSWORD", "hrpay" );
+define( "DB_USERNAME", "scott" );
+define( "DB_PASSWORD", "tiger" );
 
 define( "CLASS_PATH", "classes" );
 define( "TEMPLATE_PATH", "templates" );

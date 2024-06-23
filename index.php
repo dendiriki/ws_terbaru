@@ -4,6 +4,7 @@ set_time_limit(0); //prevent script to be terminated in 30 second
 require( "config.php" );
 
 $action = isset($_GET['action']) ? $_GET['action'] : null;
+error_log("Action: " . $action); // Tambahkan ini untuk log nilai action
 
 $material = new Material();
 $opname = new Opname();
@@ -614,6 +615,14 @@ switch ($action) {
     $data["batch"] = $opname->downloadDataOutput();
     require(TEMPLATE_PATH . "/tmpl_view_output_batch_op.php");
     break;
+
+  
+      case "test_db_connection":
+        $material = new Material();
+        echo json_encode($material->testDBConnection());
+        break;
+
+
   default:
     echo "<h1>ISPAT Barcode Scanner Web Service</h1>";
     echo "<h1>Stock Opname</h1>";

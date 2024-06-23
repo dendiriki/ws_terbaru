@@ -6637,3 +6637,31 @@ ORA-02063: preceding line from DBSAP_IIP in C:\xampp\htdocs\ws2\classes\Material
 ORA-02063: preceding line from DBSAP_IIP in C:\xampp\htdocs\ws2\classes\Material.php on line 791
 [05-Jun-2024 14:27:52 Asia/Jakarta] PHP Warning:  oci_execute(): ORA-00001: unique constraint (UNKNOWN.obj#=39486) violated
 ORA-02063: preceding line from DBSAP_IIP in C:\xampp\htdocs\ws2\classes\Material.php on line 875
+[20-Jun-2024 13:56:48 Asia/Jakarta] Action: test_db_connection
+[21-Jun-2024 16:15:44 Asia/Jakarta] Action: test_db_connection
+[21-Jun-2024 17:09:52 Asia/Jakarta] Action: ajax_login
+[21-Jun-2024 17:23:50 Asia/Jakarta] Action: ajax_login
+[23-Jun-2024 11:35:40 Asia/Jakarta] Action: ajax_login
+[23-Jun-2024 11:37:34 Asia/Jakarta] Action: download_material
+[23-Jun-2024 11:40:05 Asia/Jakarta] Action: download_material
+[23-Jun-2024 11:41:40 Asia/Jakarta] Action: download_stock
+[23-Jun-2024 11:41:40 Asia/Jakarta] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in C:\xampp\htdocs\ws2\index.php on line 366
+[23-Jun-2024 11:41:49 Asia/Jakarta] Action: download_stock
+[23-Jun-2024 11:41:49 Asia/Jakarta] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in C:\xampp\htdocs\ws2\index.php on line 366
+[23-Jun-2024 11:56:50 Asia/Jakarta] Action: download_material
+[23-Jun-2024 11:56:54 Asia/Jakarta] Action: download_stock
+[23-Jun-2024 11:56:54 Asia/Jakarta] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in C:\xampp\htdocs\ws2\index.php on line 366
+[23-Jun-2024 12:01:40 Asia/Jakarta] Action: download_stock
+[23-Jun-2024 12:01:40 Asia/Jakarta] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in C:\xampp\htdocs\ws2\index.php on line 366
+[23-Jun-2024 12:02:07 Asia/Jakarta] Action: download_stock
+[23-Jun-2024 12:02:07 Asia/Jakarta] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in C:\xampp\htdocs\ws2\index.php on line 366
+[23-Jun-2024 12:02:40 Asia/Jakarta] Action: download_stock
+[23-Jun-2024 12:02:40 Asia/Jakarta] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in C:\xampp\htdocs\ws2\index.php on line 366
+[23-Jun-2024 12:02:47 Asia/Jakarta] Action: download_stock
+[23-Jun-2024 12:02:47 Asia/Jakarta] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in C:\xampp\htdocs\ws2\index.php on line 366
+[23-Jun-2024 12:11:24 Asia/Jakarta] Action: download_stock
+[23-Jun-2024 12:11:24 Asia/Jakarta] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in C:\xampp\htdocs\ws2\index.php on line 366
+[23-Jun-2024 12:13:35 Asia/Jakarta] Action: download_stock
+[23-Jun-2024 12:13:35 Asia/Jakarta] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in C:\xampp\htdocs\ws2\index.php on line 366
+[23-Jun-2024 12:37:07 Asia/Jakarta] Action: download_stock
+[23-Jun-2024 12:37:07 Asia/Jakarta] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in C:\xampp\htdocs\ws2\index.php on line 366

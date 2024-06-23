@@ -328,7 +328,7 @@ class Material {
           $recomended_batch = array();
           $cnt = 0;
           $conn = oci_connect(DB_USERNAME, DB_PASSWORD, DB_DSN) or die("Cannot connect to database");
-          $sql = "DELETE FROM sapsr3.zsd_rec_batch@".$this->dblink_name." WHERE mandt = :mandt AND werks = :werks AND wsnum = :wsnum AND vbeln = :vbeln AND posnr = :posnr ";
+          $sql = "DELETE FROM scott.zsd_rec_batch WHERE mandt = :mandt AND werks = :werks AND wsnum = :wsnum AND vbeln = :vbeln AND posnr = :posnr ";
           $st = oci_parse($conn, $sql);
           oci_bind_by_name($st, ":mandt", $client, -1, SQLT_CHR);
           oci_bind_by_name($st, ":werks", $company, -1, SQLT_CHR);
@@ -348,7 +348,7 @@ class Material {
 					
 					$conn = oci_connect(DB_USERNAME, DB_PASSWORD, DB_DSN) or die("Cannot connect to database");
           //select batch yang sudah disimpan sebelumnya dengan nomor WSNUM yang sama agar tidak ada rekomendasi yang sama jika ada material yang sama          
-          $sql = "SELECT charg FROM sapsr3.zsd_rec_batch@".$this->dblink_name." WHERE mandt = :mandt AND werks = :werks AND wsnum = :wsnum";
+          $sql = "SELECT charg FROM scott.zsd_rec_batch WHERE mandt = :mandt AND werks = :werks AND wsnum = :wsnum";
           $st = oci_parse($conn, $sql);
           oci_bind_by_name($st, ":mandt", $client, -1, SQLT_CHR);
           oci_bind_by_name($st, ":werks", $company, -1, SQLT_CHR);
@@ -379,7 +379,7 @@ class Material {
               $recomended_batch[$cnt]["CHARG"] = $stock["charg"];
               $recomended_batch[$cnt]["ZDATE"] = $stock["zdate"];
               $recomended_batch[$cnt]["PROFL"] = "N";
-              $sql .= "INSERT INTO sapsr3.zsd_rec_batch@".$this->dblink_name." VALUES ('$client','$company','$wsnum','$vbeln','$posnr','".$stock["charg"]."','".$stock["zdate"]."','N');";
+              $sql .= "INSERT INTO scott.zsd_rec_batch VALUES ('$client','$company','$wsnum','$vbeln','$posnr','".$stock["charg"]."','".$stock["zdate"]."','N');";
               $t_stock[$y]["recom"] = "X";
               $cnt++; 
             }
@@ -653,7 +653,7 @@ class Material {
           $recomended_batch = array();
           $cnt = 0;
           $conn = new PDO(DB_DSN_PDO,DB_USERNAME,DB_PASSWORD) or die("Database Error");
-          $sql = "DELETE FROM sapsr3.zsd_rec_batch@".$this->dblink_name." WHERE mandt = :mandt AND werks = :werks AND wsnum = :wsnum AND vbeln = :vbeln AND posnr = :posnr ";
+          $sql = "DELETE FROM scott.zsd_rec_batch WHERE mandt = :mandt AND werks = :werks AND wsnum = :wsnum AND vbeln = :vbeln AND posnr = :posnr ";
           $stmt = $conn->prepare($sql) or die("SQL parse error : ".$sql);
           $stmt->bindValue(":mandt", $client, PDO::PARAM_STR);
 					$stmt->bindValue(":werks", $company, PDO::PARAM_STR);
@@ -665,7 +665,7 @@ class Material {
 					$conn = null;
 					$conn = new PDO(DB_DSN_PDO,DB_USERNAME,DB_PASSWORD) or die("Database Error");
           //select batch yang sudah disimpan sebelumnya dengan nomor WSNUM yang sama agar tidak ada rekomendasi yang sama jika ada material yang sama          
-          $sql = "SELECT charg FROM sapsr3.zsd_rec_batch@".$this->dblink_name." WHERE mandt = :mandt AND werks = :werks AND wsnum = :wsnum";
+          $sql = "SELECT charg FROM scott.zsd_rec_batch WHERE mandt = :mandt AND werks = :werks AND wsnum = :wsnum";
           $stmt = $conn->prepare($sql) or die("SQL parse error : ".$sql);
           $stmt->bindValue(":mandt", $client, PDO::PARAM_STR);
 					$stmt->bindValue(":werks", $company, PDO::PARAM_STR);
@@ -697,7 +697,7 @@ class Material {
               $recomended_batch[$cnt]["CHARG"] = $stock["charg"];
               $recomended_batch[$cnt]["ZDATE"] = $stock["zdate"];
               $recomended_batch[$cnt]["PROFL"] = "N";
-              $sql .= "INSERT INTO sapsr3.zsd_rec_batch@".$this->dblink_name." VALUES ('$client','$company','$wsnum','$vbeln','$posnr','".$stock["charg"]."','".$stock["zdate"]."','N');";
+              $sql .= "INSERT INTO scott.zsd_rec_batch VALUES ('$client','$company','$wsnum','$vbeln','$posnr','".$stock["charg"]."','".$stock["zdate"]."','N');";
               $t_stock[$y]["recom"] = "X";
               $cnt++; 
             }
@@ -744,7 +744,7 @@ class Material {
       //Pengecekan data sebelum benar-benar di-insert ke table zsd_wb_batch
       $x = 0;
       foreach ($data as $output) {
-        $sql = "SELECT DISTINCT WSNUM FROM sapsr3.zsd_wb_batch@".$this->dblink_name." ".
+        $sql = "SELECT DISTINCT WSNUM FROM scott.zsd_wb_batch".
                " WHERE MANDT = '".$client."' ".
                " AND WERKS = 'INDO' ".
                " AND CHARG = '" .$output["charg"]. "'";
@@ -840,7 +840,7 @@ class Material {
         $data_sync_output = array();
         foreach($data as $output) {
           //trnum, vbeln, posnr, matnr, charg, qty
-          $sql = "INSERT INTO sapsr3.zsd_wb_batch@".$this->dblink_name." (mandt, werks, charg, wsnum, vbeln, posnr) "
+          $sql = "INSERT INTO scott.zsd_wb_batch (mandt, werks, charg, wsnum, vbeln, posnr) "
                   . "VALUES (:mandt, :werks, :charg, :wsnum, :vbeln, :posnr)";
           $st = oci_parse($conn, $sql);
           
@@ -892,7 +892,7 @@ class Material {
         
         if(count($data_sync_output) > 0) {
           foreach($data_sync_output as $row) {
-            $sql = "UPDATE sapsr3.zsd_rec_batch@".$this->dblink_name." SET profl = 'P' "
+            $sql = "UPDATE scott.zsd_rec_batch SET profl = 'P' "
                     . "WHERE mandt = :mandt "
                     . "AND WERKS = :werks "
                     . "AND wsnum = :wsnum "
@@ -1027,6 +1027,48 @@ class Material {
     
     return $return;
   }
+// editan riki
+  public function testDBConnection() {
+    $return = array();
+    $conn = oci_connect(DB_USERNAME, DB_PASSWORD, DB_DSN);
+
+    if (!$conn) {
+        $return["status"] = "FAIL";
+        $return["msg"] = oci_error()['message'];
+        return $return;
+    }
+
+    $sql = "SELECT * FROM MAHASISWA"; // Ganti some_table dengan nama tabel sebenarnya
+    $st = oci_parse($conn, $sql);
+
+    if (!$st) {
+        $return["status"] = "FAIL";
+        $return["msg"] = oci_error($conn)['message'];
+        return $return;
+    }
+
+    oci_execute($st);
+
+    $data = array();
+    while (($row = oci_fetch_assoc($st)) != false) {
+        $data[] = $row;
+    }
+
+    oci_free_statement($st);
+    oci_close($conn);
+
+    if (count($data) > 0) {
+        $return["status"] = "OK";
+        $return["data"] = $data;
+    } else {
+        $return["status"] = "FAIL";
+        $return["msg"] = "No data found";
+    }
+
+    return $return;
+}
+
+//akhir editan riki
   
   public function querySelect($conn, $sql) {
     $data = array();
